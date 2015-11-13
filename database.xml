@@ -1,0 +1,230 @@
+<?xml version='1.0' standalone='yes'?>
+	<db name="test">
+		<defaults>
+			<col_type type="tinyint"  length="1"  unsigned="0"  zero="0"  null="0"  default="0"  comment="" />
+			<col_type type="smallint"  length="1"  unsigned="0"  zero="0"  null="0"  default="0"  comment="" />
+			<col_type type="int"  length="10"  unsigned="0"  zero="0"  null="0"  default="0"  comment="" />
+			<col_type type="bigint"  length="20"  unsigned="0"  zero="0"  null="0"  default="0"  comment="" />
+			<col_type type="bit"  length="1"  unsigned="0"  zero="0"  null="0"  default="0"  comment="" />
+			<col_type type="float"  unsigned="0"  zero="0"  null="0"  default="NULL"  comment="" />
+			<col_type type="double"  unsigned="0"  zero="0"  null="0"  default="NULL"  comment="" />
+			<col_type type="char"  length="1"  null="0"  default="NULL"  comment="" />
+			<col_type type="varchar"  length="255"  null="0"  default="NULL"  comment="" />
+			<col_type type="tinytext"  null="0"  comment="" />
+			<col_type type="text"  null="0"  comment="" />
+			<col_type type="mediumtext"  null="0"  comment="" />
+			<col_type type="longtext"  null="0"  comment="" />
+			<col_type type="varbinary"  length="50"  null="0"  default="NULL"  comment="" />
+			<col_type type="longblob"  null="0"  default="NULL"  comment="" />
+			<col_type type="date"  null="0"  default="NULL"  comment="" />
+			<col_type type="time"  null="0"  default="NULL"  comment="" />
+			<col_type type="datetime"  null="0"  default="NULL"  comment="" />
+			<col_type type="timestamp"  null="0"  default="NULL"  comment="" />
+			<col_type type="id"  length="10"  increment="1" />
+		</defaults> 
+		<tbls>
+			<tbl name="dls_glossary_categories" comment="Категории глоссария" >
+				<cols >
+					<col name="id" type="int" length="11" default="NULL" />
+					<col name="company_id" type="int" length="11" null="1" default="1" comment="ID компании" />
+					<col name="externalid" type="varchar" null="1" default="" />
+					<col name="title" type="varchar" null="1" default="" comment="Название категории" />
+					<col name="description" type="text" null="1" />
+					<col name="comment" type="varchar" null="1" comment="Комментарии" />
+					<col name="deleted" type="tinyint" length="4" null="1" comment="Удалено?" />
+					<col name="created" type="timestamp" null="1" default="CURRENT_TIMESTAMP" comment="Дата-время создания записи" />
+					<col name="creator" type="varchar" length="50" null="1" default="" comment="Создатель записи" />
+					<col name="author" type="varchar" length="50" null="1" default="" comment="Автор последнего изменения" />
+					<col name="lastchanged" type="timestamp" null="1" default="0000-00-00 00:00:00" comment="Дата-время последнего изменения" />
+				</cols>
+				<indexes>
+					<index name="PRIMARY" col="id"/>
+					<index name="company_id" col="company_id"/>
+					<index name="externalid" col="externalid"/>
+				</indexes>
+			</tbl>
+			<tbl name="eco_mode_sop" comment="Таблица с описанием режимов (стадий) ИЗА" >
+				<cols >
+					<col name="id" type="int" length="11" default="NULL" />
+					<col name="company_id" type="int" comment="ID организации" />
+					<col name="did" type="int" comment="ID подразделения" />
+					<col name="sop_id" type="int" comment="ID ИЗА из таблицы eco_sop" />
+					<col name="mode_num" type="int" comment="№ режима (стадии)" />
+					<col name="output_rate" type="float" null="1" comment="Скорость выхода ГВС, м/с" />
+					<col name="value" type="float" null="1" comment="Объём (расход) ГВС, куб.м./с" />
+					<col name="temperature" type="float" null="1" comment="Температура ГВС" />
+					<col name="comment" type="text" comment="Примечание" />
+					<col name="deleted" type="int" null="1" />
+					<col name="author" type="varchar" length="50" null="1" />
+					<col name="lastchanged" type="timestamp" null="1" comment="Дата-время последнего изменения" />
+					<col name="creator" type="varchar" length="50" null="1" comment="Создатель записи" />
+					<col name="created" type="timestamp" null="1" default="CURRENT_TIMESTAMP" comment="Дата-время создания записи" />
+				</cols>
+				<indexes>
+					<index name="PRIMARY" col="id"/>
+					<index name="company_id" col="company_id"/>
+					<index name="company_id_did" col="company_id,did"/>
+					<index name="did" col="did"/>
+					<index name="sop_id" col="sop_id"/>
+				</indexes>
+			</tbl>
+			<tbl name="laptop2" comment="" >
+				<cols >
+					<col name="code" type="int" length="11" default="NULL" />
+					<col name="model" type="varchar" length="50" />
+					<col name="spped" type="smallint" length="6" default="NULL" />
+					<col name="ram" type="smallint" length="6" default="NULL" />
+					<col name="hd" type="float" />
+					<col name="screen" type="tinyint" length="4" default="NULL" />
+					<col name="foo" type="int" default="1" />
+				</cols>
+				<indexes>
+					<index name="code" unique="1" col="code"/>
+					<index name="model" col="model"/>
+				</indexes>
+			</tbl>
+			<tbl name="pc" comment="" >
+				<cols >
+					<col name="code" type="int" length="11" default="NULL" />
+					<col name="model" type="varchar" length="50" />
+					<col name="speed" type="smallint" length="6" default="NULL" />
+					<col name="ram" type="smallint" length="6" default="NULL" />
+					<col name="hd" type="float" />
+					<col name="cd" type="varchar" length="10" />
+					<col name="price" type="float" null="1" />
+				</cols>
+				<indexes>
+					<index name="code" unique="1" col="code"/>
+					<index name="model" col="model"/>
+				</indexes>
+			</tbl>
+			<tbl name="pc2" comment="" >
+				<cols >
+					<col name="code" type="int" length="11" default="NULL" />
+					<col name="model" type="varchar" length="50" />
+					<col name="speed" type="smallint" length="6" default="NULL" />
+					<col name="ram" type="int" length="8" null="1" comment="hjdfhcbhjdbchjsdbchjbdshcbhjdcbhj" />
+					<col name="redddd" type="int" length="4" null="1" comment="sdsdsdsdasdsad" />
+					<col name="hd" type="float" />
+					<col name="cd" type="varchar" length="10" />
+					<col name="price" type="float" null="1" />
+				</cols>
+				<indexes>
+					<index name="code" unique="1" col="code"/>
+					<index name="model" col="model"/>
+				</indexes>
+			</tbl>
+			<tbl name="printer" comment="" >
+				<cols >
+					<col name="code" type="int" length="11" default="NULL" />
+					<col name="model" type="varchar" length="50" />
+					<col name="color" type="char" />
+					<col name="type" type="varchar" length="10" />
+					<col name="price" type="float" null="1" />
+				</cols>
+				<indexes>
+				</indexes>
+			</tbl>
+			<tbl name="printer2" comment="" >
+				<cols >
+					<col name="code" type="int" length="11" default="NULL" />
+					<col name="model" type="varchar" length="50" />
+					<col name="color" type="char" />
+					<col name="type" type="varchar" length="10" />
+					<col name="price" type="float" null="1" />
+				</cols>
+				<indexes>
+					<index name="kldmcklmd" unique="1" col="color,price"/>
+				</indexes>
+			</tbl>
+			<tbl name="product" comment="" >
+				<cols >
+					<col name="maker" type="varchar" length="10" />
+					<col name="model" type="varchar" length="50" />
+					<col name="type" type="varchar" length="50" />
+				</cols>
+				<indexes>
+					<index name="model" unique="1" col="model"/>
+					<index name="type" col="type"/>
+				</indexes>
+			</tbl>
+			<tbl name="product2" comment="" >
+				<cols >
+					<col name="maker" type="varchar" length="10" />
+					<col name="model" type="varchar" length="50" />
+					<col name="type" type="varchar" length="50" />
+				</cols>
+				<indexes>
+					<index name="model" unique="1" col="model"/>
+				</indexes>
+			</tbl>
+			<tbl name="rashodi" comment="" >
+				<cols >
+					<col name="id" type="int" length="11" default="NULL" />
+					<col name="adate" type="date" default="0000-00-00" />
+					<col name="atime" type="varchar" length="50" default="00:00:00" />
+					<col name="what" type="varchar" length="511" null="1" comment="Что это" />
+					<col name="anumber" type="varchar" length="511" null="1" comment="На какой номер" />
+					<col name="aoperator" type="varchar" length="511" null="1" comment="Оператор" />
+					<col name="city" type="varchar" length="511" null="1" />
+					<col name="aminut" type="varchar" length="50" null="1" default="00:00:00" comment="Сколько минут проговорено" />
+					<col name="aminut2" type="time" null="1" default="00:00:00" />
+				</cols>
+				<indexes>
+					<index name="PRIMARY" col="id"/>
+				</indexes>
+			</tbl>
+			<tbl name="rashodi3333" comment="вавамвсва" >
+				<cols >
+					<col name="id" type="int" length="11" default="NULL" />
+					<col name="adate" type="date" null="1" default="0000-00-00" />
+					<col name="atime" type="varchar" length="50" null="1" default="00:00:00" />
+					<col name="what" type="varchar" length="511" null="1" comment="Что это" />
+					<col name="anumber" type="varchar" length="511" null="1" comment="На какой номер" />
+					<col name="aoperator" type="varchar" length="511" null="1" comment="Оператор" />
+					<col name="city" type="varchar" length="511" null="1" />
+					<col name="aminut" type="varchar" length="50" null="1" default="00:00:00" comment="Сколько минут проговорено" />
+					<col name="aminut2" type="time" null="1" default="00:00:00" />
+				</cols>
+				<indexes>
+					<index name="PRIMARY" col="id"/>
+				</indexes>
+			</tbl>
+			<tbl name="t1" comment="" >
+				<cols >
+					<col name="id" type="int" default="NULL" />
+					<col name="value" type="int" length="11" null="1" default="NULL" />
+				</cols>
+				<indexes>
+					<index name="PRIMARY" col="id"/>
+				</indexes>
+			</tbl>
+			<tbl name="t2" comment="" >
+				<cols >
+					<col name="t1_id" type="int" length="11" default="NULL" />
+				</cols>
+				<indexes>
+					<index name="FK_t2_t1" col="t1_id"/>
+				</indexes>
+			</tbl>
+			<tbl name="wealth_subjects_copy" comment="Перечень материальных ценностей" >
+				<cols >
+					<col name="id" type="int" length="11" default="NULL" />
+					<col name="title" type="varchar" default="" comment="Название материальной ценности" />
+					<col name="mark" type="varchar" default="" comment="Тип, марка" />
+					<col name="category_text" type="varchar" length="50" default="" comment="Категория в текстовом формате (удалить)" />
+					<col name="unit_measure" type="varchar" length="50" null="1" comment="Единица измерения" />
+					<col name="inv_num" type="varchar" null="1" comment="Инвентарный номер" />
+					<col name="cost" type="varchar" null="1" default="0" comment="Цена за единицу" />
+					<col name="depname" type="varchar" null="1" comment="Подразделение " />
+					<col name="FIO" type="varchar" null="1" comment="Фамилия Имя Отчесттво ответственного" />
+					<col name="sponsor_text" type="varchar" null="1" comment="Спонсор/за чей счет" />
+					<col name="cnt" type="double" null="1" default="1" comment="Количество материал. ценностей" />
+				</cols>
+				<indexes>
+					<index name="PRIMARY" col="id"/>
+					<index name="unit_measure" col="unit_measure"/>
+				</indexes>
+			</tbl>
+		</tbls>
+	</db>

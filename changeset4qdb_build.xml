@@ -1,0 +1,51 @@
+<!-- Thu, 12 Nov 2015 16:59:48 +0300 -->
+<ddl>
+	<create tbl="sdsfsdf" comment="ffffffffffffffff" >
+		<cols>
+			<col name="code" type="int"  length="11" unsigned="0" zero="0" null="0" default="NULL" comment="" />
+			<col name="model" type="varchar"  length="50" null="0" default="NULL" comment="" />
+			<col name="spped" type="smallint"  length="6" unsigned="0" zero="0" null="0" default="NULL" comment="" />
+			<col name="ram" type="smallint"  length="6" unsigned="0" zero="0" null="0" default="NULL" comment="" />
+			<col name="hd" type="float"  unsigned="0" zero="0" null="0" default="NULL" comment="" />
+			<col name="screen" type="tinyint"  length="4" unsigned="0" zero="0" null="0" default="NULL" comment="" />
+			<col name="foo" type="int"  length="10" unsigned="0" zero="0" null="0" default="1" comment="" />
+		</cols>
+		<indexes>
+			<index name="code"  unique="1" col="code" />
+			<index name="model"  col="model" />
+		</indexes>
+	</create>
+
+	<alter tbl="dls_glossary_categories" >
+		<add name="sdsdfdf" type="varchar" length="255" null="0" default="NULL" comment="Комментарии"  />
+	</alter>
+
+
+</ddl>
+<!-- ################################################################################ -->
+<!-- Thu, 12 Nov 2015 17:03:06 +0300 -->
+<ddl>
+	<alter tbl="pc2" >
+		<add name="redddd" type="int" length="4" unsigned="0" zero="0" null="1" default="0" comment="sdsdsdsdasdsad"  />
+	</alter>
+
+	<alter tbl="product" >
+		<addindex name="type" col="type"  />
+	</alter>
+
+
+</ddl>
+<!-- ################################################################################ -->
+<!-- Fri, 13 Nov 2015 08:56:48 +0300 -->
+<ddl>
+	<alter tbl="pc2" >
+		<add name="redddd" type="int" length="4" unsigned="0" zero="0" null="1" default="0" comment="sdsdsdsdasdsad"  />
+	</alter>
+
+	<alter tbl="product" >
+		<addindex name="type" col="type"  />
+	</alter>
+
+
+</ddl>
+<!-- ################################################################################ -->
